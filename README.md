@@ -39,7 +39,7 @@ docker run -d \
   -p 9042:9042 \
   -p 7199:7199 \
   -p 22:22 \
-  <your-dockerhub-username>/cassandra-collector
+  dieterfl/cassandra-collector
 ```
 
 > Replace `<your-dockerhub-username>` with your Docker Hub name.
