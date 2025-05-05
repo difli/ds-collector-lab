@@ -138,6 +138,8 @@ Before collecting diagnostics, ensure that the collector can connect to Cassandr
 
 > ⏳ **Note:** If you're using **Option A (Docker Hub Image)**, Cassandra might take 15–30 seconds to fully initialize. Wait a bit before running the test to avoid false connection errors.
 
+Let me know if you want to include an automatic retry loop for the test as well.
+```
 
 ### 📥 Collect Diagnostic Snapshot
 
@@ -161,7 +163,7 @@ docker exec cassandra-collector nodetool status   # Check Cassandra health
 Enable verbose mode:
 
 ```bash
-./ds-collector -X -v -f collector.conf -n cassandra-collector
+./ds-collector -X -d -v -f collector.conf -n cassandra-collector
 ```
 
 If JMX or connection issues persist, ensure:
