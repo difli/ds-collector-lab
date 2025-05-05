@@ -128,11 +128,20 @@ git_sha="f7505e34640e400076ded906d7e9f212de6cd47f"
 
 ## 🧪 Run Diagnostics
 
-### ✅ Test Connectivity
+Here’s an optimized version of that section, improving clarity, formatting, and guidance:
+
+---
+
+### ✅ Test Cassandra Connectivity
+
+Before collecting diagnostics, ensure that the collector can connect to Cassandra:
 
 ```bash
 ./ds-collector -T -f collector.conf -n cassandra-collector
-```
+````
+
+> ⏳ **Note:** If you're using **Option A (Docker Hub Image)**, Cassandra might take 15–30 seconds to fully initialize. Wait a bit before running the test to avoid false connection errors.
+
 
 ### 📥 Collect Diagnostic Snapshot
 
