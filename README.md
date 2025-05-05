@@ -6,10 +6,6 @@ The purpose is to easily simulate a diagnostic health check by collecting releva
 
 ---
 
-Here's the validated, corrected, and extended version of your **🔧 Features** section:
-
----
-
 ## 🔧 Features
 
 * 🛠️ **Pre-installed system tools** required by the DataStax collector:
@@ -159,7 +155,7 @@ Before collecting diagnostics, ensure that the collector can connect to Cassandr
 ./ds-collector -T -f collector.conf -n cassandra-collector
 ````
 
-> ⏳ **Note:** If you're using **Option A (Docker Hub Image)**, Cassandra might take 15–30 seconds to fully initialize. Wait a bit before running the test to avoid false connection errors.
+> ⏳ **Note:** If you're using **Option A (Docker Hub Image)**, Cassandra might take 30-60 seconds to fully initialize. Wait a bit before running the test to avoid false connection errors.
 
 ### 📥 Collect Diagnostic Snapshot
 
