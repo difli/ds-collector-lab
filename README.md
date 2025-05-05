@@ -6,13 +6,36 @@ The purpose is to easily simulate a diagnostic health check by collecting releva
 
 ---
 
+Here's the validated, corrected, and extended version of your **🔧 Features** section:
+
+---
+
 ## 🔧 Features
 
-- Pre-installed tools required by the collector (`ethtool`, `lsof`, `iostat`, `jcmd`, etc.)
-- SSH server for optional remote collection (user: `root`, password: `root`)
-- Dynamic IP configuration for Cassandra
-- Validated support for JMX-based metrics export
-- Easily deployable via Docker Hub
+* 🛠️ **Pre-installed system tools** required by the DataStax collector:
+
+  * Includes `ethtool`, `lsof`, `iostat`, `jcmd`, `netstat`, `lsblk`, and more.
+* 🔐 **SSH server enabled** for optional remote diagnostics:
+
+  * Default user: `root` | Password: `root`
+* 🌐 **Dynamic IP configuration** for Cassandra:
+
+  * Automatically sets `listen_address` and `rpc_address` based on container IP.
+* 📡 **JMX support**:
+
+  * Validated configuration for metrics collection via `nodetool` and JMX port `7199`.
+* 🐳 **Dockerized deployment**:
+
+  * Containerized setup easily buildable and runnable locally.
+* ⚙️ **Diagnostic collector ready**:
+
+  * Compatible with DataStax’s `ds-collector` tooling via Docker, supporting `-C` and `-X` modes.
+* 🔒 **Optional artifact encryption**:
+
+  * Uses collector-provided `*_secret.key` when `encrypt_uploads=true`.
+
+* 🧬 **Multi-platform Docker support**: Runs on both `amd64` and `arm64` (e.g. Apple Silicon, Linux servers)
+
 
 ---
 
@@ -20,7 +43,7 @@ The purpose is to easily simulate a diagnostic health check by collecting releva
 
 ```text
 .
-├── example_collector.conf       # Example configuration 
+├── example_collector.conf       # Example configuration
 ├── README.md                    # Collector documentation
 ├── Dockerfile                   # Builds Cassandra container with extra tools
 ├── start-cassandra.sh           # Starts Cassandra with dynamic IP config
@@ -138,9 +161,6 @@ Before collecting diagnostics, ensure that the collector can connect to Cassandr
 
 > ⏳ **Note:** If you're using **Option A (Docker Hub Image)**, Cassandra might take 15–30 seconds to fully initialize. Wait a bit before running the test to avoid false connection errors.
 
-Let me know if you want to include an automatic retry loop for the test as well.
-```
-
 ### 📥 Collect Diagnostic Snapshot
 
 ```bash
@@ -160,17 +180,19 @@ docker exec cassandra-collector nodetool status   # Check Cassandra health
 
 ## 📬 Troubleshooting
 
-Enable verbose mode:
+To enable verbose output and debug mode, run:
 
 ```bash
 ./ds-collector -X -d -v -f collector.conf -n cassandra-collector
+````
+
+This generates detailed output and writes a log file to your local machine at:
+
+```
+/tmp/datastax/ds-collector-<timestamp>.log
 ```
 
-If JMX or connection issues persist, ensure:
-
-* Ports `7199` and `9042` are open
-* IP and hostname settings are correctly injected into `cassandra.yaml`
-* `start-cassandra.sh` was executed and logs don’t show startup errors
+> 💡 Use this log to investigate issues like connection failures, missing dependencies, or Cassandra accessibility.
 
 ---
 
