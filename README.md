@@ -128,10 +128,6 @@ git_sha="f7505e34640e400076ded906d7e9f212de6cd47f"
 
 ## 🧪 Run Diagnostics
 
-Here’s an optimized version of that section, improving clarity, formatting, and guidance:
-
----
-
 ### ✅ Test Cassandra Connectivity
 
 Before collecting diagnostics, ensure that the collector can connect to Cassandra:
